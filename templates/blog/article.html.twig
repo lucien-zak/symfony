@@ -1,0 +1,35 @@
+{% extends "base.html.twig" %}
+{% block title %}Acceuil
+{% endblock %}
+{% block body %}
+	{# {{dump()}} #}
+	<div>
+		<h1>{{article.title}}</h1>
+		<img src="{{ article.image }}" class="card-img" alt="...">
+		<p>{{article.description}}</p>
+		<p>De :
+			{% set usernameA = article.getUser.getEmail|split("@")   %}
+
+			{{usernameA[0]}}</p>
+		<p>Le :
+			{{article.getCreatedAt|date('d/m/Y')}}</p>
+		<h2>Commentaires</h2>
+		{% for comment in article.getComments  %}
+			<div>
+				{% set usernameC = comment.getUser.getEmail|split("@")   %}
+				<h3>Par
+					{{ usernameC[0] }}</h3>
+				<fieldset>
+					<legend>
+						<h4>{{ comment.getTitle }}</h4>
+					</legend>
+					<span>{{ comment.getDescription}}</span>
+				</fieldset>
+			</div>
+		{% endfor %}
+		<div>
+			<p>
+				<a href={{ path('articles')}}>Retour à la liste des articles</a>
+			</p>
+		</div>
+	{% endblock %}
