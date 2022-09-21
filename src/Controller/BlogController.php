@@ -20,6 +20,7 @@ function home(): Response
 #[Route('/articles', name:'articles')]
 function articles(ManagerRegistry $doctrine, Request $request): Response
     {
+    dump($this->getUser());
     $pages = $request->get('page', 1);
     $entityManager = $doctrine->getManager();
     $articles = $entityManager->getRepository(Articles::class)

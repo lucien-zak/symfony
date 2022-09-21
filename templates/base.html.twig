@@ -23,12 +23,15 @@
                 <ul>
                     <li><a href={{ path('home') }}>Home</a></li>
                     <li><a href={{ path('articles')}}>Voir tous les articles</a></li>
+					{% if app.user %}
+					<li><a href={{ path('app_profile')}}>Profil</a></li>
+					{% else %}
 					<li><a href={{ path('app_login')}}>Se connecter</a></li>
 					<li><a href={{ path('app_register')}}>S'enregister</a></li>
+					{% endif %}
                     </ul>
             </nav>
 		</header>
-		{{dump()}}
 		{% block body %}{% endblock %}
 	</body>
 </html>
