@@ -32,5 +32,10 @@
 				<a href={{ path('articles')}}>Retour à la liste des articles</a>
 			</p>
 		</div>
-        {{form(commentTypeForm)}}
-	{% endblock %}
+		{% if app.user %}
+			<h4>Ecrire un commentaore</h4>
+			{{form(commentTypeForm)}}
+				{% else %}
+					<h4>Veuillez vous connecter</h4>
+			{% endif %}
+		{% endblock %}

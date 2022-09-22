@@ -5,7 +5,7 @@
 	{% for article in articles %}
 		<div class="article">
 			<h1>{{ article.title }}</h1>
-			<img src="{{ article.image }}" class="card-img" alt="...">
+			<img width="640" height="480" src="{{ article.image }}"  class="card-img" alt="...">
 			<p>{{ article.description }}</p>
 			{% set usernameA = article.getUser.getEmail|split("@")   %}
 			<p>De :
